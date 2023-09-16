@@ -1,10 +1,10 @@
 const { Router } = require("express");
+const controllers = require("../controllers");
 
 const router = Router();
 
-router.get("/", (req, res) => res.status(200).send("from planets"));
 
-router.use("/planets", require("./planetsRouter"));
+router.get("/", controllers.getPlanets);
 
 
 module.exports = router;
