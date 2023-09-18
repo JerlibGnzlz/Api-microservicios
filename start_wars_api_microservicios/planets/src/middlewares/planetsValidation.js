@@ -5,6 +5,6 @@ module.exports = (req, res, next) => {
 
   if (name) return next();
 
-  else throw new ClientError("Error en la pelicula", 401);
+  else throw new ClientError("Error en el pnaneta", 401);
 
 };

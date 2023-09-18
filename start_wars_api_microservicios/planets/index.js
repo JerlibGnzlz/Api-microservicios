@@ -1,5 +1,7 @@
 const server = require("./src/app");
 
-server.listen(8003, () => {
+
+const PORT = 8003;
+server.listen(PORT, () => {
   console.log(`Planets server lisntening on port ${PORT}`);
 });
