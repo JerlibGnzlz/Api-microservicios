@@ -13,11 +13,11 @@ const characterSchema = new Schema(
     gender: String,
     homeworld: {
       type: String,
-      ref: "Planet"
+      ref: "Planets"
     },
     films: [{
       type: String,
-      ref: "film"
+      ref: "films"
     }]
     //   ,
     //   {
