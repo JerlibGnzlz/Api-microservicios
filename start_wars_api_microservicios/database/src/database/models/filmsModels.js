@@ -1,4 +1,4 @@
-const { Schema, Types } = require("mongoose");
+const { Schema } = require("mongoose");
 
 const filmsSchema = new Schema(
   {
@@ -16,12 +16,24 @@ const filmsSchema = new Schema(
       type: String,
       ref: "planet",
     }]
-
-    //   {
-    //   versionKey: false,
-    //   timestamps: false
-    // });
   });
+
+
+filmsSchema.statics.list = async function () {
+  return await this.find()
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "name"]);
+};
+
+filmsSchema.statics.get = async function (_id) {
+  return await this.findById({ _id })
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "name"]);
+};
+
+filmsSchema.statics.insert = async function (film) {
+  return await this.create(film);
+};
 
 
 module.exports = filmsSchema;
