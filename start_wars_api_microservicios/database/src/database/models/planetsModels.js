@@ -17,7 +17,7 @@ const planetSchema = new Schema(
     }],
     films: [{
       type: String,
-      ref: "films"
+      ref: "Films"
     }]
     //   ,
     //   {
