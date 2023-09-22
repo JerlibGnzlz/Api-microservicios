@@ -17,14 +17,26 @@ const planetSchema = new Schema(
     }],
     films: [{
       type: String,
-      ref: "Films"
+      ref: "films"
     }]
-    //   ,
-    //   {
-    //   versionKey: false,
-    //   timestamps: false
-    // });
+
   });
+
+planetSchema.statics.list = async function () {
+  return await this.find()
+    .populate("residents", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+
+planetSchema.statics.get = async function (_id) {
+  return await this.findById({ _id })
+    .populate("residents", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+
+planetSchema.statics.insert = async function (planet) {
+  return await this.create(planet);
+};
 
 
 module.exports = planetSchema;
